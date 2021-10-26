@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>21 Savage Fan Site</title>
+		<link rel="stylesheet" href="normalize.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+		/>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header text-center">
+				<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+				<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+			</div>
+
+			<div class="mainListCont">
+				<section class="listControls">
+					<!-- <button class="btn-default btn-lg">Clear All</button> -->
+					<div class="todos todoListCont">
+						<% todos.reverse().forEach((message)=>{ %>
+
+						<div>
+							<button id="<%message._id%>" class="accordion">
+								<%= message.todo%>
+							</button>
+
+							<div class="panel">
+								<p><%= message.notebody%></p>
+							</div>
+						</div>
+						<button
+							class="fas fa-trash-alt"
+							value="<%=message._id%>"
+							aria-hidden="true"
+						></button>
+						<%})%>
+					</div>
+				</section>
+
+				<div class="listCont">
+					<section class="addItem">
+						<form action="/todo" method="POST">
+							<!-- <input type="checkbox" name="status" /> -->
+							<input
+								class="userInput"
+								type="text"
+								placeholder="Enter Todo Here"
+								name="todo"
+							/>
+							<textarea
+								name="notebody"
+								cols="30"
+								rows="10"
+								id="notebody"
+							></textarea>
+							<button type="submit" class="submitBtn controlBtn">+</button>
+						</form>
+					</section>
+				</div>
+			</div>
+		</div>
+		<!-- !TEST -->
+
+		<script src="main.js"></script>
+		<script
+			src="https://kit.fontawesome.com/c0e668a8ad.js"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
