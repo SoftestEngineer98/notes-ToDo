@@ -13,7 +13,7 @@ module.exports = function (app, passport, db) {
 		'/profile',
 		/*isLoggedIn,*/ function (req, res) {
 			db.collection('todo')
-				.find()
+				.find({createdBy: req.user._id})
 				.toArray((err, result) => {
 					if (err) return console.log(err);
 					res.render('profile.ejs', {
@@ -37,7 +37,7 @@ module.exports = function (app, passport, db) {
 		db.collection('todo').insertOne(
 			{
 				todo: req.body.todo,
-				notebody: req.body.notebody,
+				notebody: req.body.notebody, createdBy: req.user._id
 			},
 			(err, result) => {
 				if (err) return console.log(err);
